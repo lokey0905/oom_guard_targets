@@ -1,0 +1,6 @@
+id=oom-guard-targets
+name=OOM 保護目標 / OOM Guard Targets
+version=v1.0
+versionCode=1
+author=lokey0905
+summary=依 target.txt 持續套用 oom_score_adj/oom_adj 保護目標程序 / Protect target processes via target.txt

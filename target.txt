@@ -1,0 +1,6 @@
+# Example app main process
+com.thejhijuqoqy.bdujvrwdcajvzin:overlay
+# Example overlay process
+com.thejhijuqoqy.bdujvrwdcajvzin:overlay:overlay
+# Example map overlay process
+com.thejhijuqoqy.bdujvrwdcajvzin:map_overlay
