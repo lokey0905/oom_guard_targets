@@ -22,10 +22,12 @@ config 設定（config.sh）
 -----------------------
 可調整以下參數：
 
-  BOOT_DELAY=25
-  LOOP_INTERVAL=10
-  LOG_ENABLED=1
-  LOG_FILE="/data/local/tmp/oom_guard.log"
+```sh
+BOOT_DELAY=25
+LOOP_INTERVAL=10
+LOG_ENABLED=1
+LOG_FILE="/data/local/tmp/oom_guard.log"
+```
 
 說明：
 - BOOT_DELAY: 開機後延遲幾秒才開始保護，避免太早啟動抓不到程序
@@ -39,13 +41,17 @@ target.txt 格式
 ---------------
 每行一個程序，欄位以空格分隔：
 
-  process_name oom_score_adj oom_adj
+```text
+process_name oom_score_adj oom_adj
+```
 
 範例：
 
-  com.example.app -900 -17
-  com.example.app:overlay -1000 -17
-  com.example.app:map_overlay -1000 -17
+```text
+com.example.app -900 -17
+com.example.app:overlay -1000 -17
+com.example.app:map_overlay -1000 -17
+```
 
 規則：
 - 第 2 欄省略時，oom_score_adj 預設為 -900
@@ -62,11 +68,15 @@ target.txt 格式
 ----
 預設路徑：
 
-  /data/local/tmp/oom_guard.log
+```text
+/data/local/tmp/oom_guard.log
+```
 
 查看方式：
 
-  su -c 'tail -f /data/local/tmp/oom_guard.log'
+```sh
+su -c 'tail -f /data/local/tmp/oom_guard.log'
+```
 
 注意事項
 --------

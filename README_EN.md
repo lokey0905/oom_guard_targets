@@ -23,10 +23,12 @@ Config Settings (config.sh)
 ---------------------------
 You can tune the following parameters:
 
-  BOOT_DELAY=25
-  LOOP_INTERVAL=10
-  LOG_ENABLED=1
-  LOG_FILE="/data/local/tmp/oom_guard.log"
+```sh
+BOOT_DELAY=25
+LOOP_INTERVAL=10
+LOG_ENABLED=1
+LOG_FILE="/data/local/tmp/oom_guard.log"
+```
 
 Details:
 - BOOT_DELAY: delay (seconds) after boot before enforcement starts
@@ -40,13 +42,17 @@ target.txt Format
 -----------------
 One process per line, fields separated by spaces:
 
-  process_name oom_score_adj oom_adj
+```text
+process_name oom_score_adj oom_adj
+```
 
 Examples:
 
-  com.example.app -900 -17
-  com.example.app:overlay -1000 -17
-  com.example.app:map_overlay -1000 -17
+```text
+com.example.app -900 -17
+com.example.app:overlay -1000 -17
+com.example.app:map_overlay -1000 -17
+```
 
 Rules:
 - If column 2 is omitted, oom_score_adj defaults to -900
@@ -63,11 +69,15 @@ Log
 ---
 Default log path:
 
-  /data/local/tmp/oom_guard.log
+```text
+/data/local/tmp/oom_guard.log
+```
 
 View log:
 
-  su -c 'tail -f /data/local/tmp/oom_guard.log'
+```sh
+su -c 'tail -f /data/local/tmp/oom_guard.log'
+```
 
 Notes
 -----
