@@ -18,6 +18,23 @@ OOM 保護目標模組
 - config.sh: 模組參數（開機延遲、輪詢間隔、日誌設定）
 - target.txt: 目標程序清單與 OOM 值
 
+config 設定（config.sh）
+-----------------------
+可調整以下參數：
+
+  BOOT_DELAY=25
+  LOOP_INTERVAL=10
+  LOG_ENABLED=1
+  LOG_FILE="/data/local/tmp/oom_guard.log"
+
+說明：
+- BOOT_DELAY: 開機後延遲幾秒才開始保護，避免太早啟動抓不到程序
+- LOOP_INTERVAL: 每次重套 OOM 值的間隔秒數
+- LOG_ENABLED: 1 為啟用日誌，0 為停用日誌
+- LOG_FILE: 日誌輸出路徑
+
+調整後建議重新開機，讓服務用新設定啟動
+
 target.txt 格式
 ---------------
 每行一個程序，欄位以空格分隔：

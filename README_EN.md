@@ -19,6 +19,23 @@ Current Project Files
 - config.sh: module settings (boot delay, loop interval, logging)
 - target.txt: target process list and OOM values
 
+Config Settings (config.sh)
+---------------------------
+You can tune the following parameters:
+
+  BOOT_DELAY=25
+  LOOP_INTERVAL=10
+  LOG_ENABLED=1
+  LOG_FILE="/data/local/tmp/oom_guard.log"
+
+Details:
+- BOOT_DELAY: delay (seconds) after boot before enforcement starts
+- LOOP_INTERVAL: interval (seconds) between each protection pass
+- LOG_ENABLED: 1 enables logging, 0 disables logging
+- LOG_FILE: log output path
+
+After changing config, reboot is recommended so the service starts with new values.
+
 target.txt Format
 -----------------
 One process per line, fields separated by spaces:
