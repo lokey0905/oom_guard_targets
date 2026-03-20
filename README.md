@@ -24,9 +24,11 @@ config 設定（config.sh）
 
 ```sh
 BOOT_DELAY=25
-LOOP_INTERVAL=10
+LOOP_INTERVAL=2
 LOG_ENABLED=1
 LOG_FILE="/data/local/tmp/oom_guard.log"
+LOG_BOOT_CLEAN_ENABLED=1
+LOG_BOOT_CLEAN_MAX_KB=1024
 ```
 
 說明：
@@ -34,6 +36,8 @@ LOG_FILE="/data/local/tmp/oom_guard.log"
 - LOOP_INTERVAL: 每次重套 OOM 值的間隔秒數
 - LOG_ENABLED: 1 為啟用日誌，0 為停用日誌
 - LOG_FILE: 日誌輸出路徑
+- LOG_BOOT_CLEAN_ENABLED: 1 為開機時檢測日誌大小並清理，0 為停用
+- LOG_BOOT_CLEAN_MAX_KB: 開機清理門檻（單位 KB），超過或等於此大小就刪除舊 log（1024 = 1MB）
 
 調整後建議重新開機，讓服務用新設定啟動
 
@@ -77,6 +81,11 @@ com.example.app:map_overlay -1000 -17
 ```sh
 su -c 'tail -f /data/local/tmp/oom_guard.log'
 ```
+
+開機清理行為：
+- 服務啟動時會先檢查 log 大小（只檢查一次）
+- 當 `LOG_BOOT_CLEAN_ENABLED=1` 且檔案大小 >= `LOG_BOOT_CLEAN_MAX_KB`（KB）時，會刪除舊 log
+- 刪除後會由新檔開始記錄
 
 注意事項
 --------
