@@ -25,9 +25,11 @@ You can tune the following parameters:
 
 ```sh
 BOOT_DELAY=25
-LOOP_INTERVAL=10
+LOOP_INTERVAL=2
 LOG_ENABLED=1
 LOG_FILE="/data/local/tmp/oom_guard.log"
+LOG_BOOT_CLEAN_ENABLED=1
+LOG_BOOT_CLEAN_MAX_KB=1024
 ```
 
 Details:
@@ -35,6 +37,8 @@ Details:
 - LOOP_INTERVAL: interval (seconds) between each protection pass
 - LOG_ENABLED: 1 enables logging, 0 disables logging
 - LOG_FILE: log output path
+- LOG_BOOT_CLEAN_ENABLED: 1 enables boot-time log size check and cleanup, 0 disables it
+- LOG_BOOT_CLEAN_MAX_KB: cleanup threshold in KB; when log size is greater than or equal to this value, old log is removed (1024 = 1MB)
 
 After changing config, reboot is recommended so the service starts with new values.
 
@@ -78,6 +82,11 @@ View log:
 ```sh
 su -c 'tail -f /data/local/tmp/oom_guard.log'
 ```
+
+Boot cleanup behavior:
+- At service start, log size is checked once
+- If `LOG_BOOT_CLEAN_ENABLED=1` and file size >= `LOG_BOOT_CLEAN_MAX_KB` (KB), old log is removed
+- Logging then continues in a new file
 
 Notes
 -----
